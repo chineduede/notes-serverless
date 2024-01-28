@@ -4,11 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "sst dev --profile chins-org",
-    "dev": "sst dev --profile chins-org",
-    "build": "sst build --profile chins-org",
-    "deploy": "sst deploy --profile chins-org",
-    "remove": "sst remove --profile chins-org",
+    "start": "AWS_PROFILE=chins-org npx sst dev",
+    "dev": "AWS_PROFILE=chins-org sst dev",
+    "build": "AWS_PROFILE=chins-org sst build",
+    "deploy": "AWS_PROFILE=chins-org npx sst deploy",
+    "remove": "AWS_PROFILE=chins-org sst remove",
     "console": "sst console --profile chins-org",
     "typecheck": "tsc --noEmit"
   },
@@ -25,5 +25,8 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "http-status-codes": "^2.3.0"
+  }
 }
