@@ -28,6 +28,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "http-status-codes": "^2.3.0"
+    "http-status-codes": "^2.3.0",
+    "stripe": "^14.14.0"
   }
 }
