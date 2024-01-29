@@ -6,11 +6,12 @@ import { APIGatewayProxyEvent } from 'aws-lambda';
 import { Table } from 'sst/node/table';
 
 export const main = handler(async (event: APIGatewayProxyEvent) => {
+  console.log('Received event: ', event);
   const data = JSON.parse(event.body || '{}');
   const params: UpdateCommandInput = {
     TableName: Table.Notes.tableName,
     Key: {
-      userId: '123',
+      userId: event.requestContext.authorizer?.iam.cognitoIdentity.identityId,
       noteId: event.pathParameters?.id,
     },
     UpdateExpression: 'SET content = :content, attachment = :attachment',

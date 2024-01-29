@@ -4,10 +4,11 @@ import dynamodb from '@notes/core/dynamodb';
 import { APIGatewayProxyEvent } from 'aws-lambda';
 
 export const main = handler(async (event: APIGatewayProxyEvent) => {
+  console.log('Received event: ', event);
   const params = {
     TableName: Table.Notes.tableName,
     Key: {
-      userId: '123',
+      userId: event.requestContext.authorizer?.iam.cognitoIdentity.identityId,
       noteId: event.pathParameters?.id,
     },
   };
