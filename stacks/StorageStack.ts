@@ -19,6 +19,14 @@ export function StorageStack(scope: StackContext) {
 
   const bucket = new Bucket(scope.stack, namingStrategy.name('uploads'), {
     name: namingStrategy.name('uploads'),
+    cors: [
+      {
+        maxAge: '1 day',
+        allowedMethods: ['GET', 'PUT', 'POST', 'DELETE', 'HEAD'],
+        allowedOrigins: ['*'],
+        allowedHeaders: ['*'],
+      },
+    ],
     cdk: {
       bucket: {
         removalPolicy: RemovalPolicy.DESTROY,
