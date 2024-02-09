@@ -11,7 +11,7 @@ export function FrontendStack({ stack, app }: StackContext) {
 
   const site = new StaticSite(stack, namingStrategy.name('react-site'), {
     path: 'packages/frontend',
-    buildCommand: 'npm run build',
+    buildCommand: 'npm run dev',
     buildOutput: 'dist',
     environment: {
       VITE_API_URL: api.url,
